@@ -1,6 +1,7 @@
 package com.develop.zuzik.viewadapter.recyclerviewadapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -14,10 +15,10 @@ import java.util.List;
 public class RecyclerViewAdapter<Value> extends RecyclerView.Adapter<ViewHolder<View>> {
 
     private final List<Value> values = new ArrayList<>();
-    private final ViewFactory<Value> factory;
+    private final List<Pair<Class<Value>, ViewFactory<Value>>> factories = new ArrayList<>();
 
-    public RecyclerViewAdapter(ViewFactory<Value> factory) {
-        this.factory = factory;
+    public <V extends Value> void addFactory(Class<V> valueClass, ViewFactory<V> factory) {
+        factories.add(new Pair<>((Class<Value>) valueClass, (ViewFactory<Value>) factory));
     }
 
     public void setValues(List<Value> values) {
@@ -26,8 +27,19 @@ public class RecyclerViewAdapter<Value> extends RecyclerView.Adapter<ViewHolder<
     }
 
     @Override
+    public int getItemViewType(int position) {
+        Class<?> valueClass = values.get(position).getClass();
+        for (int i = 0; i < factories.size(); i++) {
+            if (factories.get(i).first.equals(valueClass)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Override
     public ViewHolder<View> onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder<>((View) factory.create(parent.getContext()));
+        return new ViewHolder<>((View) factories.get(viewType).second.create(parent.getContext()));
     }
 
     @Override

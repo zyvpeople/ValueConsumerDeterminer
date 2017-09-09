@@ -10,18 +10,18 @@ import com.develop.zuzik.viewadapter.recyclerviewadapter.ValueView;
  * Created by yaroslavzozulia on 9/10/17.
  */
 
-public class TextValueView extends LinearLayout implements ValueView<TextValue> {
+public class IntValueView extends LinearLayout implements ValueView<IntValue> {
 
     private final TextView value;
 
-    public TextValueView(Context context) {
+    public IntValueView(Context context) {
         super(context);
-        inflate(context, R.layout.view_text_value, this);
+        inflate(context, R.layout.view_int_value, this);
         value = (TextView) findViewById(R.id.value);
     }
 
     @Override
-    public void setValue(TextValue textValue) {
-        value.setText(getClass().getSimpleName() + " : " + textValue.value);
+    public void setValue(IntValue intValue) {
+        value.setText(getClass().getSimpleName() + " : " + intValue.value);
     }
 }

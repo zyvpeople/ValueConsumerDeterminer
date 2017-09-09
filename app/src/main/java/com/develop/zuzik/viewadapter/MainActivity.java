@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.develop.zuzik.viewadapter.recyclerviewadapter.RecyclerViewAdapter;
+import com.develop.zuzik.viewadapter.recyclerviewadapter.ViewFactory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,11 +20,16 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        List<TextValue> values = Arrays.asList(
+        List values = Arrays.asList(
                 new TextValue("Alpha"),
                 new TextValue("Beta"),
-                new TextValue("Gamma"));
-        RecyclerViewAdapter<TextValue> adapter = new RecyclerViewAdapter<>(new TextValueViewFactory());
+                new TextValue("Gamma"),
+                new IntValue(1),
+                new IntValue(2),
+                new IntValue(3));
+        RecyclerViewAdapter<Object> adapter = new RecyclerViewAdapter<>();
+        adapter.addFactory(TextValue.class, new TextValueViewFactory());
+        adapter.addFactory(IntValue.class, new IntValueViewFactory());
         adapter.setValues(values);
         recyclerView.setAdapter(adapter);
     }
