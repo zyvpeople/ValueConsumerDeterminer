@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.develop.zuzik.viewadapter.recyclerviewadapter.RecyclerViewAdapter;
 import com.develop.zuzik.viewadapter.recyclerviewadapter.RecyclerViewAdapterBuilder;
+import com.develop.zuzik.viewadapter.recyclerviewadapter.decorator.MatchParentWidthRecyclerViewAdapterDecorator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
                 .create()
                 .displayCustomViewIfValueCantBeDisplayed(new QAViewFactory())
                 .factory(TextValue.class, new TextValueViewFactory())
-                .factory(IntValue.class, new IntValueViewFactory())
+//                .factory(IntValue.class, new IntValueViewFactory())
                 .build();
         adapter.setValues(values);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(new MatchParentWidthRecyclerViewAdapterDecorator<>(adapter));
     }
 }
