@@ -15,10 +15,11 @@ import java.util.List;
 public class RecyclerViewAdapter<Value> extends RecyclerView.Adapter<ViewHolder<View>> {
 
     private final List<Value> values = new ArrayList<>();
-    private final List<Pair<Class<Value>, ViewFactory<Value>>> factories = new ArrayList<>();
+    private final List<Pair<Class<Value>, ValueViewFactory<Value>>> factories = new ArrayList<>();
+    private final ViewHolderStrategy<Value> strategy = new EmptyViewHolderStrategy<>(new EmptyViewFactory());
 
-    public <V extends Value> void addFactory(Class<V> valueClass, ViewFactory<V> factory) {
-        factories.add(new Pair<>((Class<Value>) valueClass, (ViewFactory<Value>) factory));
+    public <V extends Value> void addFactory(Class<V> valueClass, ValueViewFactory<V> factory) {
+        factories.add(new Pair<>((Class<Value>) valueClass, (ValueViewFactory<Value>) factory));
     }
 
     public void setValues(List<Value> values) {
@@ -28,23 +29,17 @@ public class RecyclerViewAdapter<Value> extends RecyclerView.Adapter<ViewHolder<
 
     @Override
     public int getItemViewType(int position) {
-        Class<?> valueClass = values.get(position).getClass();
-        for (int i = 0; i < factories.size(); i++) {
-            if (factories.get(i).first.equals(valueClass)) {
-                return i;
-            }
-        }
-        return -1;
+        return strategy.getItemViewType(position, values, factories);
     }
 
     @Override
     public ViewHolder<View> onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder<>((View) factories.get(viewType).second.create(parent.getContext()));
+        return strategy.onCreateViewHolder(parent.getContext(), viewType, factories);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        ((ValueView<Value>) holder.view).setValue(values.get(position));
+    public void onBindViewHolder(ViewHolder<View> holder, int position) {
+        strategy.onBindViewHolder(holder, position, values, factories);
     }
 
     @Override

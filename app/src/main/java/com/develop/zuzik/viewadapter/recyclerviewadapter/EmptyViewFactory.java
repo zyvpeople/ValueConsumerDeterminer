@@ -7,6 +7,9 @@ import android.view.View;
  * Created by yaroslavzozulia on 9/10/17.
  */
 
-public interface ViewFactory {
-    View create(Context context);
+public class EmptyViewFactory implements ViewFactory {
+    @Override
+    public View create(Context context) {
+        return new View(context);
+    }
 }
