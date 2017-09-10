@@ -4,13 +4,18 @@ import android.content.Context;
 import android.util.Pair;
 import android.view.View;
 
+import com.develop.zuzik.viewadapter.recyclerviewadapter.exception.ValueViewFactoryIsNotSetException;
+import com.develop.zuzik.viewadapter.recyclerviewadapter.viewholder.ViewHolder;
+import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueView;
+import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueViewFactory;
+
 import java.util.List;
 
 /**
  * Created by yaroslavzozulia on 9/10/17.
  */
 
-public class ErrorViewHolderStrategy<Value> implements ViewHolderStrategy<Value> {
+class ErrorViewHolderStrategy<Value> implements ViewHolderStrategy<Value> {
 
     @Override
     public int getItemViewType(int position,
@@ -22,7 +27,7 @@ public class ErrorViewHolderStrategy<Value> implements ViewHolderStrategy<Value>
                 return i;
             }
         }
-        throw new ValueViewFactoryIsNotSet(valueClass);
+        throw new ValueViewFactoryIsNotSetException(valueClass);
     }
 
     @Override

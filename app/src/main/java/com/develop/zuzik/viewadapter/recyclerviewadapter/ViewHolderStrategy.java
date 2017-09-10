@@ -4,13 +4,16 @@ import android.content.Context;
 import android.util.Pair;
 import android.view.View;
 
+import com.develop.zuzik.viewadapter.recyclerviewadapter.viewholder.ViewHolder;
+import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueViewFactory;
+
 import java.util.List;
 
 /**
  * Created by yaroslavzozulia on 9/10/17.
  */
 
-public interface ViewHolderStrategy<Value> {
+interface ViewHolderStrategy<Value> {
 
     int getItemViewType(int position,
                         List<Value> values,

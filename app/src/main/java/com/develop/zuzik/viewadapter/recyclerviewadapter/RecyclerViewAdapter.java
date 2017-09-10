@@ -5,6 +5,9 @@ import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.develop.zuzik.viewadapter.recyclerviewadapter.viewholder.ViewHolder;
+import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueViewFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,11 +18,13 @@ import java.util.List;
 public class RecyclerViewAdapter<Value> extends RecyclerView.Adapter<ViewHolder<View>> {
 
     private final List<Value> values = new ArrayList<>();
-    private final List<Pair<Class<Value>, ValueViewFactory<Value>>> factories = new ArrayList<>();
-    private final ViewHolderStrategy<Value> strategy = new EmptyViewHolderStrategy<>(new EmptyViewFactory());
+    private final List<Pair<Class<Value>, ValueViewFactory<Value>>> factories;
+    private final ViewHolderStrategy<Value> strategy;
 
-    public <V extends Value> void addFactory(Class<V> valueClass, ValueViewFactory<V> factory) {
-        factories.add(new Pair<>((Class<Value>) valueClass, (ValueViewFactory<Value>) factory));
+    RecyclerViewAdapter(List<Pair<Class<Value>, ValueViewFactory<Value>>> factories,
+                        ViewHolderStrategy<Value> strategy) {
+        this.factories = factories;
+        this.strategy = strategy;
     }
 
     public void setValues(List<Value> values) {

@@ -3,7 +3,7 @@ package com.develop.zuzik.viewadapter;
 import android.content.Context;
 import android.view.View;
 
-import com.develop.zuzik.viewadapter.recyclerviewadapter.ViewFactory;
+import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ViewFactory;
 
 /**
  * Created by yaroslavzozulia on 9/10/17.

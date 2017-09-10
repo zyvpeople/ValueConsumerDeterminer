@@ -5,13 +5,18 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 
+import com.develop.zuzik.viewadapter.recyclerviewadapter.viewholder.ViewHolder;
+import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueView;
+import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueViewFactory;
+import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ViewFactory;
+
 import java.util.List;
 
 /**
  * Created by yaroslavzozulia on 9/10/17.
  */
 
-public class EmptyViewHolderStrategy<Value> implements ViewHolderStrategy<Value> {
+class EmptyViewHolderStrategy<Value> implements ViewHolderStrategy<Value> {
 
     private static final int NOT_EXISTED_VIEW_TYPE = -1;
     private final ViewFactory factory;

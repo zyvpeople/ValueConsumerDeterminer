@@ -2,8 +2,8 @@ package com.develop.zuzik.viewadapter;
 
 import android.content.Context;
 
-import com.develop.zuzik.viewadapter.recyclerviewadapter.ValueView;
-import com.develop.zuzik.viewadapter.recyclerviewadapter.ValueViewFactory;
+import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueView;
+import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueViewFactory;
 
 /**
  * Created by yaroslavzozulia on 9/10/17.

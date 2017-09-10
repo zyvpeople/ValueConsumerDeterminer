@@ -1,4 +1,4 @@
-package com.develop.zuzik.viewadapter.recyclerviewadapter;
+package com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces;
 
 import android.content.Context;
 import android.view.View;

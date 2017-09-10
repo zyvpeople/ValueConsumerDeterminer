@@ -1,4 +1,4 @@
-package com.develop.zuzik.viewadapter.recyclerviewadapter;
+package com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces;
 
 /**
  * Created by yaroslavzozulia on 9/10/17.
