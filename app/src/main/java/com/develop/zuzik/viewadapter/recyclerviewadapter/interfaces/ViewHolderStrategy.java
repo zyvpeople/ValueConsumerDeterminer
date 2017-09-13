@@ -1,24 +1,28 @@
-package com.develop.zuzik.viewadapter.recyclerviewadapter;
+package com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces;
 
 import android.content.Context;
 import android.view.View;
 
 import com.develop.zuzik.viewadapter.recyclerviewadapter.viewholder.ViewHolder;
 
+import java.util.List;
+
 /**
  * Created by yaroslavzozulia on 9/10/17.
  */
 
-interface ViewHolderStrategy<Value> {
+public interface ViewHolderStrategy<Value> {
 
-    int getItemViewType(int position,
-                        RecyclerViewAdapterState<Value> state);
+    int getViewTypesCount();
+
+    int findItemViewType(int position,
+                         List<Value> values);
 
     ViewHolder<View> onCreateViewHolder(Context context,
                                         int viewType,
-                                        RecyclerViewAdapterState<Value> state);
+                                        List<Value> values);
 
     void onBindViewHolder(ViewHolder<View> holder,
                           int position,
-                          RecyclerViewAdapterState<Value> state);
+                          List<Value> values);
 }

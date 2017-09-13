@@ -1,13 +1,13 @@
 package com.develop.zuzik.viewadapter.recyclerviewadapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueViewFactory;
+import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ViewHolderStrategy;
 import com.develop.zuzik.viewadapter.recyclerviewadapter.viewholder.ViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,36 +16,35 @@ import java.util.List;
 
 public class RecyclerViewAdapter<Value> extends RecyclerView.Adapter<ViewHolder<View>> {
 
-    private final RecyclerViewAdapterState<Value> state;
+    private final List<Value> values = new ArrayList<>();
     private final ViewHolderStrategy<Value> strategy;
 
-    RecyclerViewAdapter(List<Pair<Class<Value>, ValueViewFactory<Value>>> factories,
-                        ViewHolderStrategy<Value> strategy) {
-        state = new RecyclerViewAdapterState<>(factories);
+    RecyclerViewAdapter(ViewHolderStrategy<Value> strategy) {
         this.strategy = strategy;
     }
 
     public void setValues(List<Value> values) {
-        state.setValues(values);
+        this.values.clear();
+        this.values.addAll(values);
     }
 
     @Override
     public int getItemViewType(int position) {
-        return strategy.getItemViewType(position, state);
+        return strategy.findItemViewType(position, values);
     }
 
     @Override
     public ViewHolder<View> onCreateViewHolder(ViewGroup parent, int viewType) {
-        return strategy.onCreateViewHolder(parent.getContext(), viewType, state);
+        return strategy.onCreateViewHolder(parent.getContext(), viewType, values);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder<View> holder, int position) {
-        strategy.onBindViewHolder(holder, position, state);
+        strategy.onBindViewHolder(holder, position, values);
     }
 
     @Override
     public int getItemCount() {
-        return state.values.size();
+        return values.size();
     }
 }

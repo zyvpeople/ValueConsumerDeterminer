@@ -8,10 +8,10 @@ import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueViewFac
 
 public class ValueViewFactoryIsNotSetException extends RuntimeException {
 
-    public ValueViewFactoryIsNotSetException(Class valueClass) {
+    public ValueViewFactoryIsNotSetException(Object valueObject) {
         super(String.format(
                 "%s for %s is not set",
                 ValueViewFactory.class.getSimpleName(),
-                valueClass.getSimpleName()));
+                valueObject));
     }
 }
