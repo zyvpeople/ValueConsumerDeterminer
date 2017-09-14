@@ -5,7 +5,6 @@ import android.util.Pair;
 import android.view.View;
 
 import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.Predicate;
-import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueView;
 import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueViewFactory;
 import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ViewHolderStrategy;
 import com.develop.zuzik.viewadapter.recyclerviewadapter.viewholder.ViewHolder;
@@ -26,7 +25,7 @@ public class PredicateViewHolderStrategy<Value> implements ViewHolderStrategy<Va
 
     @Override
     public int getViewTypesCount() {
-        return factories.size();
+        return factories.size() + 1;
     }
 
     @Override
@@ -44,10 +43,5 @@ public class PredicateViewHolderStrategy<Value> implements ViewHolderStrategy<Va
     @Override
     public ViewHolder<View> onCreateViewHolder(Context context, int viewType, List<Value> values) {
         return new ViewHolder<>((View) factories.get(viewType).second.create(context));
-    }
-
-    @Override
-    public void onBindViewHolder(ViewHolder<View> holder, int position, List<Value> values) {
-        ((ValueView<Value>) holder.view).setValue(values.get(position));
     }
 }

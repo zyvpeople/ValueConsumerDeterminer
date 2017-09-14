@@ -39,9 +39,4 @@ public class ErrorViewHolderStrategy<Value> implements ViewHolderStrategy<Value>
     public ViewHolder<View> onCreateViewHolder(Context context, int viewType, List<Value> values) {
         return strategy.onCreateViewHolder(context, viewType, values);
     }
-
-    @Override
-    public void onBindViewHolder(ViewHolder<View> holder, int position, List<Value> values) {
-        strategy.onBindViewHolder(holder, position, values);
-    }
 }

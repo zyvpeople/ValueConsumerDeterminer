@@ -13,6 +13,6 @@ public class QAViewFactory implements ViewFactory {
 
     @Override
     public View create(Context context) {
-        return new QAView(context);
+        return new QAView<>(context);
     }
 }

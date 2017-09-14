@@ -28,6 +28,8 @@ import java.util.Objects;
 //TODO: focus is removed when scroll item out of screen
 //TODO: renaming
 //TODO: fix warnings
+//TODO: in builder add methods - strict mode, safe mode, qa safe mode
+//TODO: check if view is not ValueView
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -80,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 .viewForEquality(2, new IntRightViewFactory())
                 .viewForClass(Integer.class, new IntLeftViewFactory())
                 .viewForReference(intValue2, new IntValueViewFactory())
-                .viewForClass(StringMutableValue.class, new StringMutableValueViewFactory())
+//                .viewForClass(StringMutableValue.class, new StringMutableValueViewFactory())
                 .build();
         adapter.setValues(values);
         recyclerView.setAdapter(new MatchParentWidthRecyclerViewAdapterDecorator<>(adapter));

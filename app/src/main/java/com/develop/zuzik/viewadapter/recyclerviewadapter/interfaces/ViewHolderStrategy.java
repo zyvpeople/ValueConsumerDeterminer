@@ -21,8 +21,4 @@ public interface ViewHolderStrategy<Value> {
     ViewHolder<View> onCreateViewHolder(Context context,
                                         int viewType,
                                         List<Value> values);
-
-    void onBindViewHolder(ViewHolder<View> holder,
-                          int position,
-                          List<Value> values);
 }

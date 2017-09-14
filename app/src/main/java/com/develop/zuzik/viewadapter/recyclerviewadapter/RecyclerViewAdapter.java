@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueView;
 import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ViewHolderStrategy;
 import com.develop.zuzik.viewadapter.recyclerviewadapter.viewholder.ViewHolder;
 
@@ -40,7 +41,9 @@ public class RecyclerViewAdapter<Value> extends RecyclerView.Adapter<ViewHolder<
 
     @Override
     public void onBindViewHolder(ViewHolder<View> holder, int position) {
-        strategy.onBindViewHolder(holder, position, values);
+        if (holder.view instanceof ValueView) {
+            ((ValueView<Value>) holder.view).setValue(values.get(position));
+        }
     }
 
     @Override

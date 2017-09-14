@@ -3,8 +3,8 @@ package com.develop.zuzik.viewadapter.recyclerviewadapter.strategy;
 import android.content.Context;
 import android.view.View;
 
-import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueView;
 import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ViewHolderStrategy;
+import com.develop.zuzik.viewadapter.recyclerviewadapter.view.EmptyView;
 import com.develop.zuzik.viewadapter.recyclerviewadapter.viewholder.ViewHolder;
 
 import java.util.List;
@@ -51,13 +51,6 @@ public class CompositeViewHolderStrategy<Value> implements ViewHolderStrategy<Va
                 return strategy.onCreateViewHolder(context, type, values);
             }
         }
-        return new ViewHolder<>(new View(context));
-    }
-
-    @Override
-    public void onBindViewHolder(ViewHolder<View> holder, int position, List<Value> values) {
-        if (findItemViewType(position, values) != -1) {
-            ((ValueView<Value>) holder.view).setValue(values.get(position));
-        }
+        return new ViewHolder<>((View) new EmptyView<Value>(context));
     }
 }
