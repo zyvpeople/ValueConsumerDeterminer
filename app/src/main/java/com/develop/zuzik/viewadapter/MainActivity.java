@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.develop.zuzik.viewadapter.recycler_view_value_consumer_determiner_adapter.RecyclerViewValueConsumerDeterminerAdapter;
 import com.develop.zuzik.viewadapter.recyclerviewadapter.RecyclerViewAdapter;
@@ -16,6 +19,7 @@ import com.develop.zuzik.viewadapter.value_consumer_determiner.builder.ValueCons
 import com.develop.zuzik.viewadapter.value_consumer_determiner.interfaces.ValueConsumerDeterminer;
 import com.develop.zuzik.viewadapter.valueview.BooleanMutableValueViewFactory;
 import com.develop.zuzik.viewadapter.valueview.StringMutableValueViewFactory;
+import com.develop.zuzik.viewadapter.view_group_value_consumer_determiner_adapter.ViewGroupValueConsumerDeterminerAdapter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -39,6 +43,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        boolean useRecycler = false;
+        ViewGroup recyclerViewContainer = (ViewGroup) findViewById(R.id.recyclerViewContainer);
+        ViewGroup linearLayoutContainer = (ViewGroup) findViewById(R.id.linearLayoutContainer);
+        ViewGroup linearLayout = (ViewGroup) findViewById(R.id.linearLayout);
+
+        recyclerViewContainer.setVisibility(useRecycler ? View.VISIBLE : View.GONE);
+        linearLayoutContainer.setVisibility(!useRecycler ? View.VISIBLE : View.GONE);
+
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
@@ -103,10 +116,14 @@ public class MainActivity extends AppCompatActivity {
                 .consumers(intValueBuilder)
                 .consumerForClass(TextValue.class, new TextValueViewFactory())
                 .consumerForClass(BooleanMutableValue.class, new BooleanMutableValueViewFactory())
+                .consumerForClass(StringMutableValue.class, new StringMutableValueViewFactory())
                 .build();
+
         ExampleRecyclerViewAdapter<Object> adapter = new ExampleRecyclerViewAdapter<>(new RecyclerViewValueConsumerDeterminerAdapter<>(determiner));
         adapter.setValues(values);
         recyclerView.setAdapter(new MatchParentWidthRecyclerViewAdapterDecorator<>(adapter));
+
+        new ViewGroupValueConsumerDeterminerAdapter<>(determiner).setValues(values, linearLayout);
 
     }
 }
