@@ -2,9 +2,8 @@ package com.develop.zuzik.viewadapter.valueview;
 
 import android.content.Context;
 
-import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueView;
-import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueViewFactory;
-import com.develop.zuzik.viewadapter.value.BooleanMutableValue;
+import com.develop.zuzik.viewadapter.recycler_view_value_consumer_determiner_adapter.ValueView;
+import com.develop.zuzik.viewadapter.recycler_view_value_consumer_determiner_adapter.ValueViewFactory;
 import com.develop.zuzik.viewadapter.value.StringMutableValue;
 
 /**

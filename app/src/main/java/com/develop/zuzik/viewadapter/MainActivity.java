@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.develop.zuzik.viewadapter.recycler_view_value_consumer_determiner_adapter.RecyclerViewValueConsumerDeterminerAdapter;
 import com.develop.zuzik.viewadapter.recyclerviewadapter.RecyclerViewAdapter;
 import com.develop.zuzik.viewadapter.recyclerviewadapter.RecyclerViewAdapterBuilder;
 import com.develop.zuzik.viewadapter.recyclerviewadapter.decorator.MatchParentWidthRecyclerViewAdapterDecorator;
 import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.Predicate;
 import com.develop.zuzik.viewadapter.value.BooleanMutableValue;
 import com.develop.zuzik.viewadapter.value.StringMutableValue;
+import com.develop.zuzik.viewadapter.value_consumer_determiner.builder.ValueConsumerDeterminerBuilder;
+import com.develop.zuzik.viewadapter.value_consumer_determiner.interfaces.ValueConsumerDeterminer;
 import com.develop.zuzik.viewadapter.valueview.BooleanMutableValueViewFactory;
 import com.develop.zuzik.viewadapter.valueview.StringMutableValueViewFactory;
 
@@ -40,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         IntValue intValue2 = new IntValue(2);
-        List values = Arrays.asList(
+        List<Object> values = Arrays.asList(
                 new TextValue("Alpha"),
                 new TextValue("Beta"),
                 new TextValue("Gamma"),
@@ -70,21 +73,40 @@ public class MainActivity extends AppCompatActivity {
                 2,
                 3);
 
-        RecyclerViewAdapter<Object> adapter = RecyclerViewAdapterBuilder
-                .create()
-                .displayCustomViewIfValueCantBeDisplayed(new QAViewFactory())
+//        RecyclerViewAdapter<Object> adapter = RecyclerViewAdapterBuilder
+//                .create()
+//                .displayCustomViewIfValueCantBeDisplayed(new QAViewFactory())
+////                .viewForClass(TextValue.class, new TextValueViewFactory())
+////                .viewForClass(IntValue.class, new IntValueViewFactory())
+////                .viewForClass(BooleanMutableValue.class, new BooleanMutableValueViewFactory())
+////                .viewForClass(StringMutableValue.class, new StringMutableValueViewFactory())
+//
 //                .viewForClass(TextValue.class, new TextValueViewFactory())
-//                .viewForClass(IntValue.class, new IntValueViewFactory())
-//                .viewForClass(BooleanMutableValue.class, new BooleanMutableValueViewFactory())
-//                .viewForClass(StringMutableValue.class, new StringMutableValueViewFactory())
+//                .viewForEquality(2, new IntRightViewFactory())
+//                .viewForClass(Integer.class, new IntLeftViewFactory())
+//                .viewForReference(intValue2, new IntValueViewFactory())
+////                .viewForClass(StringMutableValue.class, new StringMutableValueViewFactory())
+//                .build();
+//        adapter.setValues(values);
+//        recyclerView.setAdapter(new MatchParentWidthRecyclerViewAdapterDecorator<>(adapter));
 
-                .viewForClass(TextValue.class, new TextValueViewFactory())
-                .viewForEquality(2, new IntRightViewFactory())
-                .viewForClass(Integer.class, new IntLeftViewFactory())
-                .viewForReference(intValue2, new IntValueViewFactory())
-//                .viewForClass(StringMutableValue.class, new StringMutableValueViewFactory())
+
+        ValueConsumerDeterminerBuilder<Object> intValueBuilder = ValueConsumerDeterminerBuilder
+                .create()
+                .consumerForEquality(2, new IntRightViewFactory())
+                .consumerForClass(Integer.class, new IntLeftViewFactory())
+                .consumerForReference(intValue2, new IntValueViewFactory());
+
+        ValueConsumerDeterminer<Object> determiner = ValueConsumerDeterminerBuilder
+                .create()
+                .emptyConsumer(new QAViewFactory<>())
+                .consumers(intValueBuilder)
+                .consumerForClass(TextValue.class, new TextValueViewFactory())
+                .consumerForClass(BooleanMutableValue.class, new BooleanMutableValueViewFactory())
                 .build();
+        ExampleRecyclerViewAdapter<Object> adapter = new ExampleRecyclerViewAdapter<>(new RecyclerViewValueConsumerDeterminerAdapter<>(determiner));
         adapter.setValues(values);
         recyclerView.setAdapter(new MatchParentWidthRecyclerViewAdapterDecorator<>(adapter));
+
     }
 }

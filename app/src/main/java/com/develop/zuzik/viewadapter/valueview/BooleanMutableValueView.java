@@ -5,8 +5,7 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 
 import com.develop.zuzik.viewadapter.R;
-import com.develop.zuzik.viewadapter.TextValue;
-import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueView;
+import com.develop.zuzik.viewadapter.recycler_view_value_consumer_determiner_adapter.ValueView;
 import com.develop.zuzik.viewadapter.value.BooleanMutableValue;
 import com.develop.zuzik.viewadapter.value.ValueChangedListener;
 

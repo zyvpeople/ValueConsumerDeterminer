@@ -1,8 +1,7 @@
-package com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces;
+package com.develop.zuzik.viewadapter.recycler_view_value_consumer_determiner_adapter;
 
 import android.content.Context;
 
-import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueView;
 import com.develop.zuzik.viewadapter.value_consumer_determiner.interfaces.ValueConsumer;
 
 /**

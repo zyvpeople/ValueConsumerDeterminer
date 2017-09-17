@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.ValueView;
+import com.develop.zuzik.viewadapter.recycler_view_value_consumer_determiner_adapter.ValueView;
 
 /**
  * Created by yaroslavzozulia on 9/10/17.
