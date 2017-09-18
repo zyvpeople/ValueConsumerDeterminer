@@ -6,13 +6,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.develop.zuzik.viewadapter.recycler_view_value_consumer_determiner_adapter.RecyclerViewValueConsumerDeterminerAdapter;
-import com.develop.zuzik.viewadapter.recyclerviewadapter.RecyclerViewAdapter;
-import com.develop.zuzik.viewadapter.recyclerviewadapter.RecyclerViewAdapterBuilder;
 import com.develop.zuzik.viewadapter.recyclerviewadapter.decorator.MatchParentWidthRecyclerViewAdapterDecorator;
-import com.develop.zuzik.viewadapter.recyclerviewadapter.interfaces.Predicate;
 import com.develop.zuzik.viewadapter.value.BooleanMutableValue;
 import com.develop.zuzik.viewadapter.value.StringMutableValue;
 import com.develop.zuzik.viewadapter.value_consumer_determiner.builder.ValueConsumerDeterminerBuilder;
@@ -23,7 +19,6 @@ import com.develop.zuzik.viewadapter.view_group_value_consumer_determiner_adapte
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 //TODO: list is changed
 //TODO: different views for one model
