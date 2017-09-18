@@ -1,4 +1,4 @@
-package com.develop.zuzik.viewadapter;
+package com.develop.zuzik.viewadapter.example;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,14 +7,22 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.develop.zuzik.viewadapter.R;
+import com.develop.zuzik.viewadapter.example.value.IntValue;
+import com.develop.zuzik.viewadapter.example.value.TextValue;
+import com.develop.zuzik.viewadapter.example.valueview.IntLeftViewFactory;
+import com.develop.zuzik.viewadapter.example.valueview.IntRightViewFactory;
+import com.develop.zuzik.viewadapter.example.valueview.IntValueViewFactory;
+import com.develop.zuzik.viewadapter.example.valueview.QAViewFactory;
+import com.develop.zuzik.viewadapter.example.valueview.TextValueViewFactory;
 import com.develop.zuzik.viewadapter.recycler_view_value_consumer_determiner_adapter.RecyclerViewValueConsumerDeterminerAdapter;
-import com.develop.zuzik.viewadapter.recyclerviewadapter.decorator.MatchParentWidthRecyclerViewAdapterDecorator;
-import com.develop.zuzik.viewadapter.value.BooleanMutableValue;
-import com.develop.zuzik.viewadapter.value.StringMutableValue;
+import com.develop.zuzik.viewadapter.example.decorator.MatchParentWidthRecyclerViewAdapterDecorator;
+import com.develop.zuzik.viewadapter.example.value.BooleanMutableValue;
+import com.develop.zuzik.viewadapter.example.value.StringMutableValue;
 import com.develop.zuzik.viewadapter.value_consumer_determiner.builder.ValueConsumerDeterminerBuilder;
 import com.develop.zuzik.viewadapter.value_consumer_determiner.interfaces.ValueConsumerDeterminer;
-import com.develop.zuzik.viewadapter.valueview.BooleanMutableValueViewFactory;
-import com.develop.zuzik.viewadapter.valueview.StringMutableValueViewFactory;
+import com.develop.zuzik.viewadapter.example.valueview.BooleanMutableValueViewFactory;
+import com.develop.zuzik.viewadapter.example.valueview.StringMutableValueViewFactory;
 import com.develop.zuzik.viewadapter.view_group_value_consumer_determiner_adapter.ViewGroupValueConsumerDeterminerAdapter;
 
 import java.util.Arrays;

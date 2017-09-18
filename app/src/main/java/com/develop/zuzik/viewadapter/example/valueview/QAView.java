@@ -1,8 +1,9 @@
-package com.develop.zuzik.viewadapter;
+package com.develop.zuzik.viewadapter.example.valueview;
 
 import android.content.Context;
 import android.widget.LinearLayout;
 
+import com.develop.zuzik.viewadapter.R;
 import com.develop.zuzik.viewadapter.recycler_view_value_consumer_determiner_adapter.ValueView;
 
 /**

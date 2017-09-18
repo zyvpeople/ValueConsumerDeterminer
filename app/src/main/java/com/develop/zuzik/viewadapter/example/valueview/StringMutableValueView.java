@@ -1,4 +1,4 @@
-package com.develop.zuzik.viewadapter.valueview;
+package com.develop.zuzik.viewadapter.example.valueview;
 
 import android.content.Context;
 import android.text.Editable;
@@ -8,8 +8,8 @@ import android.widget.LinearLayout;
 
 import com.develop.zuzik.viewadapter.R;
 import com.develop.zuzik.viewadapter.recycler_view_value_consumer_determiner_adapter.ValueView;
-import com.develop.zuzik.viewadapter.value.StringMutableValue;
-import com.develop.zuzik.viewadapter.value.ValueChangedListener;
+import com.develop.zuzik.viewadapter.example.value.StringMutableValue;
+import com.develop.zuzik.viewadapter.example.value.ValueChangedListener;
 
 /**
  * Created by yaroslavzozulia on 9/10/17.

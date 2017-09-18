@@ -1,4 +1,4 @@
-package com.develop.zuzik.viewadapter;
+package com.develop.zuzik.viewadapter.example.valueview;
 
 import android.content.Context;
 

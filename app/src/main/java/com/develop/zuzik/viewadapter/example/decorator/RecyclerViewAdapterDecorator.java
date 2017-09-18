@@ -1,4 +1,4 @@
-package com.develop.zuzik.viewadapter.recyclerviewadapter.decorator;
+package com.develop.zuzik.viewadapter.example.decorator;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;

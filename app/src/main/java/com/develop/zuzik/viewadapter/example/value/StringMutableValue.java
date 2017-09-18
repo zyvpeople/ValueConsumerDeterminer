@@ -1,4 +1,4 @@
-package com.develop.zuzik.viewadapter.value;
+package com.develop.zuzik.viewadapter.example.value;
 
 /**
  * Created by yaroslavzozulia on 9/10/17.
