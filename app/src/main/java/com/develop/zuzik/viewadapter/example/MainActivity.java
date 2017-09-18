@@ -29,16 +29,13 @@ import java.util.Arrays;
 import java.util.List;
 
 //TODO: list is changed
-//TODO: different views for one model
 //TODO: animation
 //TODO: not only list but grid etc
 //TODO: item decoration
 //TODO: create special view with interface and remove checking in onBindViewHolder
 //TODO: add log if set already set factory
 //TODO: focus is removed when scroll item out of screen
-//TODO: renaming
 //TODO: fix warnings
-//TODO: in builder add methods - strict mode, safe mode, qa safe mode
 //TODO: check if view is not ValueView
 public class MainActivity extends AppCompatActivity {
 
