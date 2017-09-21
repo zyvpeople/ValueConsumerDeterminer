@@ -19,7 +19,9 @@ import com.develop.zuzik.viewadapter.recycler_view_value_consumer_determiner_ada
 import com.develop.zuzik.viewadapter.example.decorator.MatchParentWidthRecyclerViewAdapterDecorator;
 import com.develop.zuzik.viewadapter.example.value.BooleanMutableValue;
 import com.develop.zuzik.viewadapter.example.value.StringMutableValue;
+import com.develop.zuzik.viewadapter.recycler_view_value_consumer_determiner_adapter.ValueViewFactory;
 import com.develop.zuzik.viewadapter.value_consumer_determiner.builder.ValueConsumerDeterminerBuilder;
+import com.develop.zuzik.viewadapter.value_consumer_determiner.interfaces.ValueConsumer;
 import com.develop.zuzik.viewadapter.value_consumer_determiner.interfaces.ValueConsumerDeterminer;
 import com.develop.zuzik.viewadapter.example.valueview.BooleanMutableValueViewFactory;
 import com.develop.zuzik.viewadapter.example.valueview.StringMutableValueViewFactory;
@@ -37,6 +39,11 @@ import java.util.List;
 //TODO: focus is removed when scroll item out of screen
 //TODO: fix warnings
 //TODO: check if view is not ValueView
+
+//TODO: add valueConsumer generic to builder and add protection
+//TODO: add valueview generic to factory for protection
+//TODO: forget about type casting
+//TODO: write test
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -104,14 +111,15 @@ public class MainActivity extends AppCompatActivity {
 //        recyclerView.setAdapter(new MatchParentWidthRecyclerViewAdapterDecorator<>(adapter));
 
 
-        ValueConsumerDeterminerBuilder<Object> intValueBuilder = ValueConsumerDeterminerBuilder
-                .create()
+        ValueConsumerDeterminerBuilder<Object, ValueViewFactory> intValueBuilder = ValueConsumerDeterminerBuilder
+                .create(ValueViewFactory.class)
                 .consumerForEquality(2, new IntRightViewFactory())
                 .consumerForClass(Integer.class, new IntLeftViewFactory())
-                .consumerForReference(intValue2, new IntValueViewFactory());
+                .consumerForReference(intValue2, new IntValueViewFactory())
+                .consumerForClass(IntValue.class, new IncorrectValueConsumer<IntValue>());
 
         ValueConsumerDeterminer<Object> determiner = ValueConsumerDeterminerBuilder
-                .create()
+                .create(ValueViewFactory.class)
                 .emptyConsumer(new QAViewFactory<>())
                 .consumers(intValueBuilder)
                 .consumerForClass(TextValue.class, new TextValueViewFactory())
@@ -126,4 +134,8 @@ public class MainActivity extends AppCompatActivity {
         new ViewGroupValueConsumerDeterminerAdapter<>(determiner).setValues(values, linearLayout);
 
     }
+
+    private static final class IncorrectValueConsumer<Value> implements ValueConsumer<Value> {
+    }
+
 }
