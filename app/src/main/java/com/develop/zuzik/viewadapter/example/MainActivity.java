@@ -93,24 +93,6 @@ public class MainActivity extends AppCompatActivity {
                 2,
                 3);
 
-//        RecyclerViewAdapter<Object> adapter = RecyclerViewAdapterBuilder
-//                .create()
-//                .displayCustomViewIfValueCantBeDisplayed(new QAViewFactory())
-////                .viewForClass(TextValue.class, new TextValueViewFactory())
-////                .viewForClass(IntValue.class, new IntValueViewFactory())
-////                .viewForClass(BooleanMutableValue.class, new BooleanMutableValueViewFactory())
-////                .viewForClass(StringMutableValue.class, new StringMutableValueViewFactory())
-//
-//                .viewForClass(TextValue.class, new TextValueViewFactory())
-//                .viewForEquality(2, new IntRightViewFactory())
-//                .viewForClass(Integer.class, new IntLeftViewFactory())
-//                .viewForReference(intValue2, new IntValueViewFactory())
-////                .viewForClass(StringMutableValue.class, new StringMutableValueViewFactory())
-//                .build();
-//        adapter.setValues(values);
-//        recyclerView.setAdapter(new MatchParentWidthRecyclerViewAdapterDecorator<>(adapter));
-
-
         ValueConsumerDeterminerBuilder<Object, ValueViewFactory> intValueBuilder = ValueConsumerDeterminerBuilder
                 .create(ValueViewFactory.class)
                 .consumerForEquality(2, new IntRightViewFactory())
