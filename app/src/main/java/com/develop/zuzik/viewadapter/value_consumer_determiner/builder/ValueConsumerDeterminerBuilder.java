@@ -25,13 +25,13 @@ public class ValueConsumerDeterminerBuilder<Value, Consumer extends ValueConsume
 
     private final Class<Consumer> consumerClass;
     private final List<ValueConsumerDeterminer<Value, Consumer>> determiners = new ArrayList<>();
-    private ValueConsumer<Value> emptyConsumerOrNull = null;
+    private ValueConsumer<Value> defaultConsumerOrNull = null;
 
     private ValueConsumerDeterminerBuilder(Class<Consumer> consumerClass) {
         this.consumerClass = consumerClass;
     }
 
-    public <V extends Value> ValueConsumerDeterminerBuilder<Value, Consumer> consumerForClass(Class<V> valueClass, ValueConsumer<V> consumer) {
+    public <V extends Value> ValueConsumerDeterminerBuilder<Value, Consumer> withClass(Class<V> valueClass, ValueConsumer<V> consumer) {
         if (isValidValueConsumer((ValueConsumer<Value>) consumer)) {
             determiners.add(new PredicateValueConsumerDeterminer<Value, Consumer>(new ClassPredicate<Value>((Class<Value>) valueClass), (ValueConsumer<Value>) consumer));
         } else {
@@ -40,7 +40,7 @@ public class ValueConsumerDeterminerBuilder<Value, Consumer extends ValueConsume
         return this;
     }
 
-    public <V extends Value> ValueConsumerDeterminerBuilder<Value, Consumer> consumerForEquality(V value, ValueConsumer<V> consumer) {
+    public <V extends Value> ValueConsumerDeterminerBuilder<Value, Consumer> withEquality(V value, ValueConsumer<V> consumer) {
         if (isValidValueConsumer((ValueConsumer<Value>) consumer)) {
             determiners.add(new PredicateValueConsumerDeterminer<Value, Consumer>(new EqualityPredicate<Value>(value), (ValueConsumer<Value>) consumer));
         } else {
@@ -49,7 +49,7 @@ public class ValueConsumerDeterminerBuilder<Value, Consumer extends ValueConsume
         return this;
     }
 
-    public <V extends Value> ValueConsumerDeterminerBuilder<Value, Consumer> consumerForReference(V reference, ValueConsumer<V> consumer) {
+    public <V extends Value> ValueConsumerDeterminerBuilder<Value, Consumer> withReference(V reference, ValueConsumer<V> consumer) {
         if (isValidValueConsumer((ValueConsumer<Value>) consumer)) {
             determiners.add(new PredicateValueConsumerDeterminer<Value, Consumer>(new ReferencePredicate<Value>(reference), (ValueConsumer<Value>) consumer));
         } else {
@@ -58,23 +58,21 @@ public class ValueConsumerDeterminerBuilder<Value, Consumer extends ValueConsume
         return this;
     }
 
-    public ValueConsumerDeterminerBuilder<Value, Consumer> emptyConsumer
-            (ValueConsumer<Value> emptyConsumer) {
-        emptyConsumerOrNull = emptyConsumer;
+    public ValueConsumerDeterminerBuilder<Value, Consumer> withDefault(ValueConsumer<Value> emptyConsumer) {
+        defaultConsumerOrNull = emptyConsumer;
         return this;
     }
 
-    public ValueConsumerDeterminerBuilder<Value, Consumer> consumers
-            (ValueConsumerDeterminerBuilder<Value, Consumer> builder) {
+    public ValueConsumerDeterminerBuilder<Value, Consumer> withConsumers(ValueConsumerDeterminerBuilder<Value, Consumer> builder) {
         determiners.addAll(builder.determiners);
         return this;
     }
 
     public ValueConsumerDeterminer<Value, Consumer> build() {
         CompositeValueConsumerDeterminer<Value, Consumer> compositeDeterminer = new CompositeValueConsumerDeterminer<>(determiners);
-        return emptyConsumerOrNull == null
+        return defaultConsumerOrNull == null
                 ? compositeDeterminer
-                : new EmptyValueConsumerDeterminer<>(compositeDeterminer, emptyConsumerOrNull);
+                : new EmptyValueConsumerDeterminer<>(compositeDeterminer, defaultConsumerOrNull);
     }
 
     private boolean isValidValueConsumer(ValueConsumer<Value> consumer) {

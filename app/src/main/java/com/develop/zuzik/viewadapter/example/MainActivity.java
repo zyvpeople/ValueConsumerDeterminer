@@ -1,49 +1,35 @@
 package com.develop.zuzik.viewadapter.example;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.develop.zuzik.viewadapter.R;
+import com.develop.zuzik.viewadapter.example.decorator.MatchParentWidthRecyclerViewAdapterDecorator;
+import com.develop.zuzik.viewadapter.example.value.BooleanMutableValue;
 import com.develop.zuzik.viewadapter.example.value.IntValue;
+import com.develop.zuzik.viewadapter.example.value.StringMutableValue;
 import com.develop.zuzik.viewadapter.example.value.TextValue;
+import com.develop.zuzik.viewadapter.example.valueview.BooleanMutableValueViewFactory;
 import com.develop.zuzik.viewadapter.example.valueview.IntLeftViewFactory;
 import com.develop.zuzik.viewadapter.example.valueview.IntRightViewFactory;
 import com.develop.zuzik.viewadapter.example.valueview.IntValueViewFactory;
 import com.develop.zuzik.viewadapter.example.valueview.QAViewFactory;
+import com.develop.zuzik.viewadapter.example.valueview.StringMutableValueViewFactory;
 import com.develop.zuzik.viewadapter.example.valueview.TextValueViewFactory;
 import com.develop.zuzik.viewadapter.recycler_view_value_consumer_determiner_adapter.RecyclerViewValueConsumerDeterminerAdapter;
-import com.develop.zuzik.viewadapter.example.decorator.MatchParentWidthRecyclerViewAdapterDecorator;
-import com.develop.zuzik.viewadapter.example.value.BooleanMutableValue;
-import com.develop.zuzik.viewadapter.example.value.StringMutableValue;
 import com.develop.zuzik.viewadapter.recycler_view_value_consumer_determiner_adapter.ValueViewFactory;
 import com.develop.zuzik.viewadapter.value_consumer_determiner.builder.ValueConsumerDeterminerBuilder;
 import com.develop.zuzik.viewadapter.value_consumer_determiner.interfaces.ValueConsumer;
 import com.develop.zuzik.viewadapter.value_consumer_determiner.interfaces.ValueConsumerDeterminer;
-import com.develop.zuzik.viewadapter.example.valueview.BooleanMutableValueViewFactory;
-import com.develop.zuzik.viewadapter.example.valueview.StringMutableValueViewFactory;
 import com.develop.zuzik.viewadapter.view_group_value_consumer_determiner_adapter.ViewGroupValueConsumerDeterminerAdapter;
 
 import java.util.Arrays;
 import java.util.List;
 
-//TODO: list is changed
-//TODO: animation
-//TODO: not only list but grid etc
-//TODO: item decoration
-//TODO: create special view with interface and remove checking in onBindViewHolder
-//TODO: add log if set already set factory
-//TODO: focus is removed when scroll item out of screen
-//TODO: fix warnings
-//TODO: check if view is not ValueView
-
-//TODO: add valueConsumer generic to builder and add protection
-//TODO: add valueview generic to factory for protection
-//TODO: forget about type casting
-//TODO: write test
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -95,18 +81,18 @@ public class MainActivity extends AppCompatActivity {
 
         ValueConsumerDeterminerBuilder<Object, ValueViewFactory> intValueBuilder = ValueConsumerDeterminerBuilder
                 .create(ValueViewFactory.class)
-                .consumerForEquality(2, new IntRightViewFactory())
-                .consumerForClass(Integer.class, new IntLeftViewFactory())
-                .consumerForReference(intValue2, new IntValueViewFactory())
-                .consumerForClass(IntValue.class, new IncorrectValueConsumer<IntValue>());
+                .withEquality(2, new IntRightViewFactory())
+                .withClass(Integer.class, new IntLeftViewFactory())
+                .withReference(intValue2, new IntValueViewFactory())
+                .withClass(IntValue.class, new IncorrectValueConsumer<IntValue>());
 
         ValueConsumerDeterminer<Object, ValueViewFactory> determiner = ValueConsumerDeterminerBuilder
                 .create(ValueViewFactory.class)
-                .emptyConsumer(new QAViewFactory<>())
-                .consumers(intValueBuilder)
-                .consumerForClass(TextValue.class, new TextValueViewFactory())
-                .consumerForClass(BooleanMutableValue.class, new BooleanMutableValueViewFactory())
-                .consumerForClass(StringMutableValue.class, new StringMutableValueViewFactory())
+                .withDefault(new QAViewFactory<>())
+                .withConsumers(intValueBuilder)
+                .withClass(TextValue.class, new TextValueViewFactory())
+                .withClass(BooleanMutableValue.class, new BooleanMutableValueViewFactory())
+                .withClass(StringMutableValue.class, new StringMutableValueViewFactory())
                 .build();
 
         ExampleRecyclerViewAdapter<Object> adapter = new ExampleRecyclerViewAdapter<>(new RecyclerViewValueConsumerDeterminerAdapter<>(determiner));
