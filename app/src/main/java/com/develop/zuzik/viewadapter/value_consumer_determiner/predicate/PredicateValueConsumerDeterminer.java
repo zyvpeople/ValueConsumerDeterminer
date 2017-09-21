@@ -10,7 +10,7 @@ import com.develop.zuzik.viewadapter.value_consumer_determiner.interfaces.ValueC
  * Created by yaroslavzozulia on 9/10/17.
  */
 
-public class PredicateValueConsumerDeterminer<Value> implements ValueConsumerDeterminer<Value> {
+public class PredicateValueConsumerDeterminer<Value, Consumer extends ValueConsumer> implements ValueConsumerDeterminer<Value, Consumer> {
 
     private final Predicate<Value> predicate;
     private final ValueConsumer<Value> consumer;

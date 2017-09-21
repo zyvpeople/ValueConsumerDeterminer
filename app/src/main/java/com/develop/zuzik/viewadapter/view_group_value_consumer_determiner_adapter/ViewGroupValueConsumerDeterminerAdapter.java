@@ -20,9 +20,9 @@ import java.util.List;
 //TODO: remove type casting
 public class ViewGroupValueConsumerDeterminerAdapter<Value> {
 
-    private final ValueConsumerDeterminer<Value> determiner;
+    private final ValueConsumerDeterminer<Value, ValueViewFactory> determiner;
 
-    public ViewGroupValueConsumerDeterminerAdapter(ValueConsumerDeterminer<Value> determiner) {
+    public ViewGroupValueConsumerDeterminerAdapter(ValueConsumerDeterminer<Value, ValueViewFactory> determiner) {
         this.determiner = determiner;
     }
 

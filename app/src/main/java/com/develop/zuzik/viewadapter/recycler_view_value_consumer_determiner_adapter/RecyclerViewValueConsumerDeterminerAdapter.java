@@ -18,9 +18,9 @@ import java.util.List;
 //TODO: remove type casting
 public final class RecyclerViewValueConsumerDeterminerAdapter<Value> {
 
-    private final ValueConsumerDeterminer<Value> determiner;
+    private final ValueConsumerDeterminer<Value, ValueViewFactory> determiner;
 
-    public RecyclerViewValueConsumerDeterminerAdapter(ValueConsumerDeterminer<Value> determiner) {
+    public RecyclerViewValueConsumerDeterminerAdapter(ValueConsumerDeterminer<Value, ValueViewFactory> determiner) {
         this.determiner = determiner;
     }
 

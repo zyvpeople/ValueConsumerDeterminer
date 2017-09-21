@@ -11,12 +11,12 @@ import com.develop.zuzik.viewadapter.value_consumer_determiner.interfaces.ValueC
  * Created by yaroslavzozulia on 9/10/17.
  */
 
-public class EmptyValueConsumerDeterminer<Value> implements ValueConsumerDeterminer<Value> {
+public class EmptyValueConsumerDeterminer<Value, Consumer extends ValueConsumer> implements ValueConsumerDeterminer<Value, Consumer> {
 
-    private final ValueConsumerDeterminer<Value> determiner;
+    private final ValueConsumerDeterminer<Value, Consumer> determiner;
     private final ValueConsumer<Value> emptyConsumer;
 
-    public EmptyValueConsumerDeterminer(ValueConsumerDeterminer<Value> determiner, ValueConsumer<Value> emptyConsumer) {
+    public EmptyValueConsumerDeterminer(ValueConsumerDeterminer<Value, Consumer> determiner, ValueConsumer<Value> emptyConsumer) {
         this.determiner = determiner;
         this.emptyConsumer = emptyConsumer;
     }

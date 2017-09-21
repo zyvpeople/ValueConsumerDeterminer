@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 .consumerForReference(intValue2, new IntValueViewFactory())
                 .consumerForClass(IntValue.class, new IncorrectValueConsumer<IntValue>());
 
-        ValueConsumerDeterminer<Object> determiner = ValueConsumerDeterminerBuilder
+        ValueConsumerDeterminer<Object, ValueViewFactory> determiner = ValueConsumerDeterminerBuilder
                 .create(ValueViewFactory.class)
                 .emptyConsumer(new QAViewFactory<>())
                 .consumers(intValueBuilder)

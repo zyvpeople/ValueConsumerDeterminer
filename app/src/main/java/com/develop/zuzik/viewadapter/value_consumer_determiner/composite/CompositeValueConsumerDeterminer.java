@@ -10,18 +10,18 @@ import java.util.List;
 /**
  * Created by yaroslavzozulia on 9/10/17.
  */
-public class CompositeValueConsumerDeterminer<Value> implements ValueConsumerDeterminer<Value> {
+public class CompositeValueConsumerDeterminer<Value, Consumer extends ValueConsumer> implements ValueConsumerDeterminer<Value, Consumer> {
 
-    private final List<ValueConsumerDeterminer<Value>> determiners;
+    private final List<ValueConsumerDeterminer<Value, Consumer>> determiners;
 
-    public CompositeValueConsumerDeterminer(List<ValueConsumerDeterminer<Value>> determiners) {
+    public CompositeValueConsumerDeterminer(List<ValueConsumerDeterminer<Value, Consumer>> determiners) {
         this.determiners = determiners;
     }
 
     @Override
     public int getValueConsumerTypesCount() {
         int count = 0;
-        for (ValueConsumerDeterminer<Value> determiner : determiners) {
+        for (ValueConsumerDeterminer<Value, Consumer> determiner : determiners) {
             count += determiner.getValueConsumerTypesCount();
         }
         return count;
@@ -30,7 +30,7 @@ public class CompositeValueConsumerDeterminer<Value> implements ValueConsumerDet
     @Override
     public int getValueConsumerType(Value value) throws GetValueConsumerTypeException {
         int count = 0;
-        for (ValueConsumerDeterminer<Value> determiner : determiners) {
+        for (ValueConsumerDeterminer<Value, Consumer> determiner : determiners) {
             try {
                 return determiner.getValueConsumerType(value) + count;
             } catch (GetValueConsumerTypeException e) {
@@ -44,7 +44,7 @@ public class CompositeValueConsumerDeterminer<Value> implements ValueConsumerDet
     @Override
     public ValueConsumer<Value> getValueConsumer(int type) throws GetValueConsumerException {
         int count = 0;
-        for (ValueConsumerDeterminer<Value> determiner : determiners) {
+        for (ValueConsumerDeterminer<Value, Consumer> determiner : determiners) {
             count += determiner.getValueConsumerTypesCount();
             if (type < count) {
                 int typeForDeterminer = count - type;

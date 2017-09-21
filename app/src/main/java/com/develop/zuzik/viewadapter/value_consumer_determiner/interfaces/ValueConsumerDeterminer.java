@@ -7,7 +7,7 @@ import com.develop.zuzik.viewadapter.value_consumer_determiner.exception.GetValu
  * Created by yaroslavzozulia on 9/10/17.
  */
 
-public interface ValueConsumerDeterminer<Value> {
+public interface ValueConsumerDeterminer<Value, Consumer extends ValueConsumer> {
 
     int getValueConsumerTypesCount();
 
