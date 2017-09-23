@@ -22,10 +22,10 @@ import com.develop.zuzik.value_consumer_determiner.sample.valueview.StringMutabl
 import com.develop.zuzik.value_consumer_determiner.sample.valueview.TextValueViewFactory;
 import com.develop.zuzik.valueconsumerdeterminer.core.builder.ValueConsumerDeterminerBuilder;
 import com.develop.zuzik.valueconsumerdeterminer.core.interfaces.ValueConsumer;
-import com.develop.zuzik.value_consumer_determiner.view_group_value_consumer_determiner_adapter.ViewGroupValueConsumerDeterminerAdapter;
 import com.develop.zuzik.valueconsumerdeterminer.core.interfaces.ValueConsumerDeterminer;
 import com.develop.zuzik.valueconsumerdeterminer.recyclerview.RecyclerViewValueConsumerDeterminer;
 import com.develop.zuzik.valueconsumerdeterminer.recyclerview.ValueViewFactory;
+import com.develop.zuzik.valueconsumerdeterminer.viewgroup.ViewGroupValueConsumerDeterminer;
 
 import java.util.Arrays;
 import java.util.List;
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.setValues(values);
         recyclerView.setAdapter(new MatchParentWidthRecyclerViewAdapterDecorator<>(adapter));
 
-        new ViewGroupValueConsumerDeterminerAdapter<>(determiner).setValues(values, linearLayout);
+        new ViewGroupValueConsumerDeterminer<>(determiner).setValues(values, linearLayout);
 
     }
 

@@ -1,4 +1,4 @@
-package com.develop.zuzik.value_consumer_determiner.view_group_value_consumer_determiner_adapter;
+package com.develop.zuzik.valueconsumerdeterminer.viewgroup;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +16,11 @@ import java.util.List;
  * Created by yaroslavzozulia on 9/17/17.
  */
 
-//TODO: create builder
-//TODO: remove type casting
-public class ViewGroupValueConsumerDeterminerAdapter<Value> {
+public class ViewGroupValueConsumerDeterminer<Value> {
 
     private final ValueConsumerDeterminer<Value, ValueViewFactory> determiner;
 
-    public ViewGroupValueConsumerDeterminerAdapter(ValueConsumerDeterminer<Value, ValueViewFactory> determiner) {
+    public ViewGroupValueConsumerDeterminer(ValueConsumerDeterminer<Value, ValueViewFactory> determiner) {
         this.determiner = determiner;
     }
 
