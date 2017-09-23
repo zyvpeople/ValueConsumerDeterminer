@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.recyclerViewSample).setOnClickListener(runActivity(RecyclerViewSampleActivity.class));
         findViewById(R.id.viewGroupSample).setOnClickListener(runActivity(ViewGroupSampleActivity.class));
+        findViewById(R.id.viewPagerSample).setOnClickListener(runActivity(ViewPagerSampleActivity.class));
     }
 
     private View.OnClickListener runActivity(final Class<? extends Activity> activityClass) {

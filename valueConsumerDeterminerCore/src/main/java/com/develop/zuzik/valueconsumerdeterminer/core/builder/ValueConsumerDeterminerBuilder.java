@@ -59,7 +59,11 @@ public class ValueConsumerDeterminerBuilder<Value, Consumer extends ValueConsume
     }
 
     public ValueConsumerDeterminerBuilder<Value, Consumer> withDefault(ValueConsumer<Value> emptyConsumer) {
-        defaultConsumerOrNull = emptyConsumer;
+        if (isValidValueConsumer(emptyConsumer)) {
+            defaultConsumerOrNull = emptyConsumer;
+        } else {
+            logW("Can't register empty consumer " + emptyConsumer + " with " + emptyConsumer.getClass() + ". Must be " + consumerClass);
+        }
         return this;
     }
 
