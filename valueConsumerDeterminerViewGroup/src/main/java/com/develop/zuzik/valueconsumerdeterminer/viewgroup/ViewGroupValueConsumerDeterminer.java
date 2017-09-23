@@ -7,8 +7,8 @@ import com.develop.zuzik.valueconsumerdeterminer.core.exception.GetValueConsumer
 import com.develop.zuzik.valueconsumerdeterminer.core.exception.GetValueConsumerTypeException;
 import com.develop.zuzik.valueconsumerdeterminer.core.interfaces.ValueConsumer;
 import com.develop.zuzik.valueconsumerdeterminer.core.interfaces.ValueConsumerDeterminer;
-import com.develop.zuzik.valueconsumerdeterminer.recyclerview.ValueView;
-import com.develop.zuzik.valueconsumerdeterminer.recyclerview.ValueViewFactory;
+import com.develop.zuzik.valueconsumerdeterminer.recyclerviewadapter.ValueView;
+import com.develop.zuzik.valueconsumerdeterminer.recyclerviewadapter.ValueViewFactory;
 
 import java.util.List;
 

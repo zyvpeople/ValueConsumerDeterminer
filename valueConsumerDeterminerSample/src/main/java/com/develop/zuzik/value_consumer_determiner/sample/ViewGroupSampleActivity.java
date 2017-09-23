@@ -2,8 +2,6 @@ package com.develop.zuzik.value_consumer_determiner.sample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import com.develop.zuzik.value_consumer_determiner.R;
@@ -21,8 +19,7 @@ import com.develop.zuzik.value_consumer_determiner.sample.valueview.TextValueVie
 import com.develop.zuzik.valueconsumerdeterminer.core.builder.ValueConsumerDeterminerBuilder;
 import com.develop.zuzik.valueconsumerdeterminer.core.interfaces.ValueConsumer;
 import com.develop.zuzik.valueconsumerdeterminer.core.interfaces.ValueConsumerDeterminer;
-import com.develop.zuzik.valueconsumerdeterminer.recyclerview.ValueRecyclerViewAdapter;
-import com.develop.zuzik.valueconsumerdeterminer.recyclerview.ValueViewFactory;
+import com.develop.zuzik.valueconsumerdeterminer.recyclerviewadapter.ValueViewFactory;
 import com.develop.zuzik.valueconsumerdeterminer.viewgroup.ViewGroupValueConsumerDeterminer;
 
 import java.util.Arrays;

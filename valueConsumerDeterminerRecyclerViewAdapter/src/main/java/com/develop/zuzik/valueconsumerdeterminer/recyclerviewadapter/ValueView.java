@@ -1,4 +1,4 @@
-package com.develop.zuzik.valueconsumerdeterminer.recyclerview;
+package com.develop.zuzik.valueconsumerdeterminer.recyclerviewadapter;
 
 /**
  * Created by yaroslavzozulia on 9/10/17.

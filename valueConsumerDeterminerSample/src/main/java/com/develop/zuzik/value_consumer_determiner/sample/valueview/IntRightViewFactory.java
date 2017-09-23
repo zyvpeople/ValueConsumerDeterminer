@@ -2,8 +2,8 @@ package com.develop.zuzik.value_consumer_determiner.sample.valueview;
 
 import android.content.Context;
 
-import com.develop.zuzik.valueconsumerdeterminer.recyclerview.ValueView;
-import com.develop.zuzik.valueconsumerdeterminer.recyclerview.ValueViewFactory;
+import com.develop.zuzik.valueconsumerdeterminer.recyclerviewadapter.ValueView;
+import com.develop.zuzik.valueconsumerdeterminer.recyclerviewadapter.ValueViewFactory;
 
 
 /**

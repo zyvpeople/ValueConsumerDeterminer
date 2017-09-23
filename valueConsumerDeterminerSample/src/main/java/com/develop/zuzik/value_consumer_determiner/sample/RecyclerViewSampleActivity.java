@@ -21,8 +21,8 @@ import com.develop.zuzik.value_consumer_determiner.sample.valueview.TextValueVie
 import com.develop.zuzik.valueconsumerdeterminer.core.builder.ValueConsumerDeterminerBuilder;
 import com.develop.zuzik.valueconsumerdeterminer.core.interfaces.ValueConsumer;
 import com.develop.zuzik.valueconsumerdeterminer.core.interfaces.ValueConsumerDeterminer;
-import com.develop.zuzik.valueconsumerdeterminer.recyclerview.ValueRecyclerViewAdapter;
-import com.develop.zuzik.valueconsumerdeterminer.recyclerview.ValueViewFactory;
+import com.develop.zuzik.valueconsumerdeterminer.recyclerviewadapter.ValueRecyclerViewAdapter;
+import com.develop.zuzik.valueconsumerdeterminer.recyclerviewadapter.ValueViewFactory;
 
 import java.util.Arrays;
 import java.util.List;

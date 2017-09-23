@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.LinearLayout;
 
 import com.develop.zuzik.value_consumer_determiner.R;
-import com.develop.zuzik.valueconsumerdeterminer.recyclerview.ValueView;
+import com.develop.zuzik.valueconsumerdeterminer.recyclerviewadapter.ValueView;
 
 /**
  * Created by yaroslavzozulia on 9/10/17.

@@ -1,4 +1,4 @@
-package com.develop.zuzik.valueconsumerdeterminer.recyclerview;
+package com.develop.zuzik.valueconsumerdeterminer.recyclerviewadapter;
 
 import android.view.View;
 import android.view.ViewGroup;
