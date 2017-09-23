@@ -20,12 +20,12 @@ import com.develop.zuzik.value_consumer_determiner.sample.valueview.IntValueView
 import com.develop.zuzik.value_consumer_determiner.sample.valueview.QAViewFactory;
 import com.develop.zuzik.value_consumer_determiner.sample.valueview.StringMutableValueViewFactory;
 import com.develop.zuzik.value_consumer_determiner.sample.valueview.TextValueViewFactory;
-import com.develop.zuzik.value_consumer_determiner.recycler_view_value_consumer_determiner_adapter.RecyclerViewValueConsumerDeterminerAdapter;
-import com.develop.zuzik.value_consumer_determiner.recycler_view_value_consumer_determiner_adapter.ValueViewFactory;
 import com.develop.zuzik.valueconsumerdeterminer.core.builder.ValueConsumerDeterminerBuilder;
 import com.develop.zuzik.valueconsumerdeterminer.core.interfaces.ValueConsumer;
-import com.develop.zuzik.valueconsumerdeterminer.core.interfaces.ValueConsumerDeterminer;
 import com.develop.zuzik.value_consumer_determiner.view_group_value_consumer_determiner_adapter.ViewGroupValueConsumerDeterminerAdapter;
+import com.develop.zuzik.valueconsumerdeterminer.core.interfaces.ValueConsumerDeterminer;
+import com.develop.zuzik.valueconsumerdeterminer.recyclerview.RecyclerViewValueConsumerDeterminer;
+import com.develop.zuzik.valueconsumerdeterminer.recyclerview.ValueViewFactory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 .withClass(StringMutableValue.class, new StringMutableValueViewFactory())
                 .build();
 
-        ExampleRecyclerViewAdapter<Object> adapter = new ExampleRecyclerViewAdapter<>(new RecyclerViewValueConsumerDeterminerAdapter<>(determiner));
+        ExampleRecyclerViewAdapter<Object> adapter = new ExampleRecyclerViewAdapter<>(new RecyclerViewValueConsumerDeterminer<>(determiner));
         adapter.setValues(values);
         recyclerView.setAdapter(new MatchParentWidthRecyclerViewAdapterDecorator<>(adapter));
 

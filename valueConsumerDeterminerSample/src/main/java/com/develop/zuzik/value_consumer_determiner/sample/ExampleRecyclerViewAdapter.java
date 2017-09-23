@@ -4,8 +4,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.develop.zuzik.value_consumer_determiner.recycler_view_value_consumer_determiner_adapter.RecyclerViewValueConsumerDeterminerAdapter;
-import com.develop.zuzik.value_consumer_determiner.recycler_view_value_consumer_determiner_adapter.ViewHolder;
+import com.develop.zuzik.valueconsumerdeterminer.recyclerview.RecyclerViewValueConsumerDeterminer;
+import com.develop.zuzik.valueconsumerdeterminer.recyclerview.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +17,9 @@ import java.util.List;
 public class ExampleRecyclerViewAdapter<Value> extends RecyclerView.Adapter<ViewHolder<View>> {
 
     private final List<Value> values = new ArrayList<>();
-    private final RecyclerViewValueConsumerDeterminerAdapter<Value> determinerAdapter;
+    private final RecyclerViewValueConsumerDeterminer<Value> determinerAdapter;
 
-    public ExampleRecyclerViewAdapter(RecyclerViewValueConsumerDeterminerAdapter<Value> determinerAdapter) {
+    public ExampleRecyclerViewAdapter(RecyclerViewValueConsumerDeterminer<Value> determinerAdapter) {
         this.determinerAdapter = determinerAdapter;
     }
 
@@ -35,7 +35,7 @@ public class ExampleRecyclerViewAdapter<Value> extends RecyclerView.Adapter<View
 
     @Override
     public ViewHolder<View> onCreateViewHolder(ViewGroup parent, int viewType) {
-        return determinerAdapter.onCreateViewHolder(parent, viewType, values);
+        return determinerAdapter.onCreateViewHolder(parent, viewType);
     }
 
     @Override

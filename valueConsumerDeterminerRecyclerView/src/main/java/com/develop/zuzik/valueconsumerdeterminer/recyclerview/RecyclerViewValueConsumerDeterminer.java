@@ -1,4 +1,4 @@
-package com.develop.zuzik.value_consumer_determiner.recycler_view_value_consumer_determiner_adapter;
+package com.develop.zuzik.valueconsumerdeterminer.recyclerview;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +14,11 @@ import java.util.List;
  * Created by yaroslavzozulia on 9/10/17.
  */
 
-//TODO: create builder
-//TODO: remove type casting
-public final class RecyclerViewValueConsumerDeterminerAdapter<Value> {
+public final class RecyclerViewValueConsumerDeterminer<Value> {
 
     private final ValueConsumerDeterminer<Value, ValueViewFactory> determiner;
 
-    public RecyclerViewValueConsumerDeterminerAdapter(ValueConsumerDeterminer<Value, ValueViewFactory> determiner) {
+    public RecyclerViewValueConsumerDeterminer(ValueConsumerDeterminer<Value, ValueViewFactory> determiner) {
         this.determiner = determiner;
     }
 
@@ -34,8 +32,7 @@ public final class RecyclerViewValueConsumerDeterminerAdapter<Value> {
     }
 
     public ViewHolder<View> onCreateViewHolder(ViewGroup parent,
-                                               int viewType,
-                                               List<Value> values) {
+                                               int viewType) {
         try {
             ValueConsumer<Value> consumer = determiner.getValueConsumer(viewType);
             ValueViewFactory<Value> factory = (ValueViewFactory<Value>) consumer;
@@ -50,8 +47,6 @@ public final class RecyclerViewValueConsumerDeterminerAdapter<Value> {
     public void onBindViewHolder(ViewHolder<View> holder,
                                  int position,
                                  List<Value> values) {
-        if (holder.view instanceof ValueView) {
-            ((ValueView<Value>) holder.view).setValue(values.get(position));
-        }
+        ((ValueView<Value>) holder.view).setValue(values.get(position));
     }
 }

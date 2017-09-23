@@ -7,9 +7,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.develop.zuzik.value_consumer_determiner.R;
-import com.develop.zuzik.value_consumer_determiner.recycler_view_value_consumer_determiner_adapter.ValueView;
 import com.develop.zuzik.value_consumer_determiner.sample.value.StringMutableValue;
 import com.develop.zuzik.value_consumer_determiner.sample.value.ValueChangedListener;
+import com.develop.zuzik.valueconsumerdeterminer.recyclerview.ValueView;
 
 /**
  * Created by yaroslavzozulia on 9/10/17.

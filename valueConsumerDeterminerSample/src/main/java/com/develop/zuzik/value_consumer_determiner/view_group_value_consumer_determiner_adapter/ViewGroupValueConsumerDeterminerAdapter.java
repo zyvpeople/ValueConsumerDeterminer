@@ -3,12 +3,12 @@ package com.develop.zuzik.value_consumer_determiner.view_group_value_consumer_de
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.develop.zuzik.value_consumer_determiner.recycler_view_value_consumer_determiner_adapter.ValueView;
-import com.develop.zuzik.value_consumer_determiner.recycler_view_value_consumer_determiner_adapter.ValueViewFactory;
 import com.develop.zuzik.valueconsumerdeterminer.core.exception.GetValueConsumerException;
 import com.develop.zuzik.valueconsumerdeterminer.core.exception.GetValueConsumerTypeException;
 import com.develop.zuzik.valueconsumerdeterminer.core.interfaces.ValueConsumer;
 import com.develop.zuzik.valueconsumerdeterminer.core.interfaces.ValueConsumerDeterminer;
+import com.develop.zuzik.valueconsumerdeterminer.recyclerview.ValueView;
+import com.develop.zuzik.valueconsumerdeterminer.recyclerview.ValueViewFactory;
 
 import java.util.List;
 

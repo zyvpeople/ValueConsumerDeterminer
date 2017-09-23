@@ -1,4 +1,4 @@
-package com.develop.zuzik.value_consumer_determiner.recycler_view_value_consumer_determiner_adapter;
+package com.develop.zuzik.valueconsumerdeterminer.recyclerview;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

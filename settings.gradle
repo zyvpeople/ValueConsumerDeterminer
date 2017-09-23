@@ -1,1 +1,1 @@
-include ':valueConsumerDeterminerSample', ':valueConsumerDeterminerCore'
+include ':valueConsumerDeterminerSample', ':valueConsumerDeterminerCore', ':valueConsumerDeterminerRecyclerView'
